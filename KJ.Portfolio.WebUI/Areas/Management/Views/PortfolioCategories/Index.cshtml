@@ -1,0 +1,54 @@
+﻿@using KJ.Portfolio.Web.Ui.Models.Entities
+@model ICollection<PortfolioCategory>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Kategoriler</h5>
+        <a class="btn btn-primary float-end" asp-action="Create">Yeni Ekle</a>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>
+                            <button class="btn btn-danger" onclick='Delete("@(item.Id)", this)'>Sil</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+
+@section PageScripts{
+        <script>
+            function Delete(id, elem){
+                $.ajax({
+                    url: "/Management/PortfolioCategories/Delete/" + id,
+                    method: "POST",
+                    success: function(s){
+                       if(s.success == true){
+                           $(elem).closest("tr").remove();
+                       }
+                       else{
+                           alert(s.message);
+                       }
+                    },
+                    error: function(){
+                        alert("Bir sorun oluştu!");
+                    }
+                })
+            }
+        </script>
+}

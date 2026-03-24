@@ -1,0 +1,680 @@
+﻿@using KJ.Portfolio.Web.Ui.Models.Entities
+@using KJ.Portfolio.WebUI.Models.Entities
+@model HomePage
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section light-background">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 data-aos="fade-up" data-aos-delay="200">@Model.HeroTitle</h1>
+                        <p data-aos="fade-up" data-aos-delay="300">@Model.HeroDescription</p>
+                        <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
+                            <a href="@Model.HeroButtonUrl" class="btn-primary">@Model.HeroButtonTitle</a>
+                            
+                        </div>
+                        <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
+                            <div class="stat-item">
+                                <div class="stat-number">@Model.HeroProjectCount</div>
+                                <div class="stat-label">@Model.HeroProjectTitle</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">@Model.HeroClientPercent</div>
+                                <div class="stat-label">@Model.HeroClient</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">@Model.HeroExperienceListYear?.ToString("yyyy")</div>
+                                <div class="stat-label">@Model.HeroExperienceListTitle</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
+                        <img src="@Model.HeroImageUrl" alt="Business Success" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /Hero Section -->
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <span class="subtitle">@Model.AboutUpperTitle</span>
+            <h2>@Model.AboutTitle</h2>
+            <p>@Model.AboutDescription</p>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                    <div class="content">
+                        <h2>@Model.AboutContentTitle</h2>
+
+                        <p>@Model.AboutContentDescription</p>
+
+
+                       
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                    <div class="image-wrapper">
+                        <img src="@Model.AboutImageUrl" alt="About us" class="img-fluid">
+                        <div class="floating-card" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="card-content">
+                                <div class="icon">
+                                    <i class="bi bi-award"></i>
+                                    @* <i class="bi @Model.AboutAwardIconClass"></i> *@
+                                </div>
+                                <div class="text">
+                                    <h4>@Model.AboutAwardTitle</h4>
+                                    <p>@Model.AboutAwardDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /About Section -->
+    <!-- WhatIKnows Section -->
+    <section id="WhatIKnows" class="WhatIKnows section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <span class="subtitle">@Model.WhatIKnowUpperTitle</span>
+            <h2>@Model.WhatIKnowTitle</h2>
+            <p>@Model.WhatIKnowDescription</p>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-5">
+
+                @foreach (var item in Model.WhatIKnowCards)
+                {
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="WhatIKnow-item">
+                            <div class="WhatIKnow-icon">
+                                <i class="bi @item.IconClass"></i>
+                            </div>
+                            <h3>@item.Title</h3>
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+
+                    <!-- End WhatIKnow Item -->
+                }
+
+
+
+
+            </div>
+
+        </div>
+
+    </section><!-- /WhatIKnows Section -->
+    <!-- Technologies Us Section -->
+    <section id="Technologies-us" class="Technologies-us section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <span class="subtitle">@Model.TechnologiesUpperTitle</span>
+            <h2>@Model.TechnologiesTitle</h2>
+            <p>@Model.TechnologiesDescription</p>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                    <div class="content">
+                        <h2>@Model.EducationTitle</h2>
+                        <p>@Model.EducationDescription</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                    <div class="image-wrapper">
+                        <img src="@Model.EducationImageUrl" alt="Professional Experience collaboration" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid" data-aos="fade-up" data-aos-delay="400">
+                <div class="row g-5">
+
+                   @*   @foreach (var item in Model.TechnologiesCards) 
+                    {
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-item">
+                                <div class="icon-wrapper">
+                                    <i class="bi @item.IconClass"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Feature Item -->
+                    } *@
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /Technologies Us Section -->
+    <!-- Experience Section -->
+    <section id="Experience" class="Experience section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <span class="subtitle">@Model.ExperienceUpperTitle</span>
+            <h2>@Model.ExperienceTitle</h2>
+            <p>@Model.ExperienceDescription</p>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-5">
+
+                @foreach (var item in Model.Experiences)
+                {
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="Experience-member">
+                            <div class="member-img">
+                                <img src="@item.ImageUrl" class="img-fluid" alt="Sarah Johnson" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>@item.FullName</h4>
+                                <span>@item.Title</span>
+                                <p>@item.Description</p>
+                                <div class="social">
+                                    <a href="@item.SocialUrl1"><i class="bi @item.SocialIconClass1"></i></a>
+                                    <a href="@item.SocialUrl2"><i class="bi @item.SocialIconClass2"></i></a>
+                                    <a href="@item.SocialUrl3"><i class="bi @item.SocialIconClass3"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Experience Member -->
+                }
+
+
+            </div>
+
+        </div>
+
+    </section><!-- /Experience Section -->
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <span class="subtitle">@Model.PortfolioUpperTitle</span>
+            <h2>@Model.PortfolioTitle</h2>
+            <p>@Model.PortfolioDescription</p>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+                <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
+                    <li data-filter="*" class="filter-active">All Categories</li>
+
+                    @{
+                        byte categoryCounter = 1;
+                    }
+
+                    @foreach (var item in Model.Categories)
+                    {
+                        <li data-filter=".category@(categoryCounter)">@item.Name</li>
+
+                        categoryCounter++;
+                    }
+
+                </ul><!-- End Portfolio Filters -->
+
+               @*  <div class="row gy-5 isotope-container" data-aos="fade-up" data-aos-delay="300">
+
+                    @{
+                        categoryCounter = 1;
+                        bool imageIsLeft = true;
+                    }
+
+                    @foreach (var category in Model.Categories)
+                    {
+                        @foreach (var item in category.Items)
+                        {
+                            <div class="col-lg-12 portfolio-item isotope-item category@(categoryCounter)">
+                                <article class="portfolio-card">
+                                    <div class="row g-4">
+                                        <div class="col-md-6 @(!imageIsLeft ? "order-md-2" : "")">
+                                            <div class="project-visual">
+                                                <img src="~/assets/img/portfolio/Portfolio.png" alt="Enterprise Digital Platform" class="img-fluid" loading="lazy">
+                                                <div class="project-overlay">
+                                                    <div class="overlay-content">
+                                                        <a href="~/assets/img/portfolio/EstateXplore.png" class="view-project glightbox" aria-label="View project image">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="project-link" aria-label="View project details">
+                                                            <i class="bi bi-arrow-up-right"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 @(!imageIsLeft ? "order-md-1" : "")">
+                                            <div class="project-details">
+                                                <div class="project-header">
+                                                    <span class="project-category">@category.Name</span>
+                                                    <time class="project-year">@item.ProjectYear?.ToString("yyyy")</time>
+                                                </div>
+                                                <h3 class="project-title">@item.Title</h3>
+                                                <p class="project-description">@item.Description</p>
+                                                <div class="project-meta">
+                                                    <span class="client-name">@item.Client</span>
+                                                    <div class="project-scope">
+                                                        @foreach (var tag in item.Tags)
+                                                        {
+                                                            <span class="scope-item">@tag.Name</span>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            if (imageIsLeft)
+                                imageIsLeft = false;
+                            else
+                                imageIsLeft = true;
+                        }
+
+                        categoryCounter++;
+                    } *@
+
+
+
+                <div class="row gy-5 isotope-container" data-aos="fade-up" data-aos-delay="300">
+
+                    @{
+                        categoryCounter = 1;
+                        bool imageIsLeft = true;
+                        int itemIndex = 0;
+                    }
+
+                    @foreach (var category in Model.Categories)
+                    {
+                        @foreach (var item in category.Items)
+                        {
+                            var imagePath = itemIndex % 2 == 0
+                            ? "~/assets/img/portfolio/Portfolio.png"
+                            : "~/assets/img/portfolio/ESTATEXPLOREANAFOTOEkran görüntüsü 2026-03-06 222525.png";
+
+                            <div class="col-lg-12 portfolio-item isotope-item category@(categoryCounter)">
+                                <article class="portfolio-card">
+                                    <div class="row g-4">
+
+                                        <div class="col-md-6 @(!imageIsLeft ? "order-md-2" : "")">
+                                            <div class="project-visual">
+                                                <img src="@Url.Content(imagePath)"
+                                                     alt="@item.Title"
+                                                     class="img-fluid"
+                                                     loading="lazy">
+
+                                                <div class="project-overlay">
+                                                    <div class="overlay-content">
+                                                        <a href="@Url.Content(imagePath)"
+                                                           class="view-project glightbox"
+                                                           aria-label="View project image">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+
+                                                        <a href="#"
+                                                           class="project-link"
+                                                           aria-label="View project details">
+                                                            <i class="bi bi-arrow-up-right"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 @(!imageIsLeft ? "order-md-1" : "")">
+                                            <div class="project-details">
+                                                <div class="project-header">
+                                                    <span class="project-category">@category.Name</span>
+                                                    <time class="project-year">
+                                                        @item.ProjectYear?.ToString("yyyy")
+                                                    </time>
+                                                </div>
+
+                                                <h3 class="project-title">@item.Title</h3>
+                                                <p class="project-description">@item.Description</p>
+
+                                                <div class="project-meta">
+                                                    <span class="client-name">@item.Client</span>
+
+                                                    <div class="project-scope">
+                                                        @foreach (var tag in item.Tags)
+                                                        {
+                                                            <span class="scope-item">@tag.Name</span>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </article>
+                            </div>
+
+                            if (imageIsLeft)
+                                imageIsLeft = false;
+                            else
+                                imageIsLeft = true;
+
+                            itemIndex++;
+                        }
+
+                        categoryCounter++;
+                    }
+
+                </div>
+
+                </div><!-- End Portfolio Items Container -->
+
+            </div>
+
+            @* <div class="portfolio-conclusion" data-aos="fade-up" data-aos-delay="400">
+                <div class="conclusion-content">
+                    <h4>Ready to elevate your business?</h4>
+                    <p>Let's discuss how we can transform your digital presence and drive meaningful results for your organization.</p>
+                    <div class="conclusion-actions">
+                        <a href="#contact" class="primary-action">
+                            Start Conversation
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="#portfolio" class="secondary-action">
+                            View All Projects
+                        </a>
+                    </div>
+                </div>
+            </div> *@
+
+        </div>
+
+    </section><!-- /Portfolio Section -->
+    
+    @* <!-- ExperienceLists Section -->
+    <section id="ExperienceLists" class="ExperienceLists section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <span class="subtitle">@Model.ExperienceListUpperTitle</span>
+            <h2>@Model.ExperienceListTitle</h2>
+            <p>@Model.ExperienceListDescription</p>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="ExperienceList-slider swiper init-swiper">
+                <script type="application/json" class="swiper-config">
+                    {
+                      "loop": true,
+                      "speed": 600,
+                      "autoplay": {
+                        "delay": 4000
+                      },
+                      "slidesPerView": 1,
+                      "spaceBetween": 30,
+                      "navigation": {
+                        "nextEl": ".swiper-button-next",
+                        "prevEl": ".swiper-button-prev"
+                      },
+                      "breakpoints": {
+                        "768": {
+                          "slidesPerView": 2
+                        },
+                        "1200": {
+                          "slidesPerView": 3
+                        }
+                      }
+                    }
+                </script>
+
+                <div class="swiper-wrapper">
+
+                    @{
+                        short aosCounter = 200;
+                    }
+
+                    @foreach (var item in Model.ExperienceListItems)
+                    {
+                        <!-- ExperienceList Slide 1 -->
+                        <div class="swiper-slide">
+                            <div class="ExperienceList-item" data-aos="zoom-in" data-aos-delay="@aosCounter">
+                                <div class="ExperienceList-header">
+                                    <img src="@item.ImageUrl" alt="Client" class="img-fluid" loading="lazy">
+                                    <div class="rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                                <div class="ExperienceList-body">
+                                    <p>@item.Comment</p>
+                                </div>
+                                <div class="ExperienceList-footer">
+                                    <h5>@item.FullName</h5>
+                                    <span>@item.Title</span>
+                                    <div class="quote-icon">
+                                        <i class="bi bi-chat-quote-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        aosCounter += 100;
+                        <!-- End ExperienceList Slide -->
+                    }
+
+                </div>
+
+                <div class="swiper-navigation">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section><!-- /ExperienceLists Section --> *@
+    <!-- Contact Section -->
+    <section id="contact" class="contact section light-background">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <span class="subtitle">@Model.ContactUpperTitle</span>
+            <h2>@Model.ContactTitle</h2>
+            <p>@Model.ContactDescription</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-5">
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>@Model.ContactContentTitle</h4>
+                            <p>@Model.ContactContentDescription</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-details">
+
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="bi bi-envelope-open"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Email Me</span>
+                                <span class="detail-value">@Model.ContactEmail</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="bi bi-telephone-outbound"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Call Me</span>
+                                <span class="detail-value">@Model.ContactPhone</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Visit Me</span>
+                                <span class="detail-value">@Model.ContactAddress</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="form-wrapper">
+                        <div class="form-header">
+                            <h3>@Model.ContactFormTitle</h3>
+                        </div>
+
+                        <form action="SendMessage" method="post" enctype="multipart/form-data">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input type="text" id="name" name="name" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="email" id="email" name="email" required="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input type="text" id="subject" name="subject" required="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="projectMessage">Message</label>
+                                <textarea name="message" id="message" rows="5" required=""></textarea>
+                            </div>
+
+                            <button type="button" onclick="Send()" class="submit-btn">
+                                <span>Send Message</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section><!-- /Contact Section -->
+
+</main>
+
+
+@section Scripts {
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+    <script>
+
+        var lastSendTime = 0;
+
+        function Send(){
+
+            var now = new Date().getTime();
+            var fiveMinutes = 5 * 60 * 1000;
+
+            if(now - lastSendTime < fiveMinutes){
+                alert("You can send a new message only every 5 minutes.");
+                return;
+            }
+
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var subject = $("#subject").val();
+            var message = $("#message").val();
+
+            $.ajax({
+                url: "/Home/SendMessage",
+                method: "POST",
+                data: {
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message
+                },
+                success: function(s){
+
+                    lastSendTime = new Date().getTime();
+
+                    alert("Thank you! Your message has been sent successfully.");
+
+                },
+                error: function(){
+                    alert("error");
+                }
+            })
+        }
+
+    </script>
+}
+

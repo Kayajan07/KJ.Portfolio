@@ -1,0 +1,34 @@
+﻿@* @model TechnologiesCard
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Yeni Referans Kartı Ekle</h5>
+        <a class="btn btn-primary float-end" asp-action="Index">Geri</a>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="Title"></label>
+                <input class="form-control" asp-for="Title" type="text" />
+                <span asp-validation-for="Title" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="Description"></label>
+                <textarea class="form-control" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" style="color:red;"></span>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" asp-for="IconClass"></label>
+                <input class="form-control" asp-for="IconClass" type="text" />
+                <span asp-validation-for="IconClass" style="color:red;"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div> *@
